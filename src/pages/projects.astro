@@ -1,0 +1,65 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+---
+
+<Layout title="Nirlep - Projects">
+  <Navbar active="projects" />
+  <div class="projects-container">
+    <h1>Projects</h1>
+    <p>
+      A few selected projects from my <a
+        title="Nirlep5252"
+        href="https://github.com/Nirlep5252">Github</a
+      > profile.
+    </p>
+    <div class="projects-list">
+      <Card
+        title="EpicBot"
+        body="A simple, multipurpose Discord bot."
+        href="https://github.com/Nirlep5252/EpicBot"
+        tags="Python,React,MongoDB"
+      />
+      <Card
+        title="EpicBot-Images"
+        body="A Python module that creates memes and several cool effects from images."
+        href="https://github.com/Nirlep5252/epicbot-images"
+        demo="https://pypi.org/project/epicbot-images/"
+        tags="Python"
+      />
+      <Card
+        title="My personal website"
+        body="Whatever it is that you are looking at rn"
+        href="#"
+        tags="Astro,TypeScript"
+      />
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .projects-container {
+    padding: 30px 0;
+  }
+  .projects-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-top: 50px;
+  }
+  a {
+    color: white;
+    text-underline-offset: 4px;
+    text-decoration-color: #05d8e8;
+    text-decoration-thickness: 2px;
+  }
+  a:hover {
+    text-decoration-style: wavy;
+    text-underline-offset: 2px;
+  }
+  h1 {
+    font-size: 50px;
+  }
+</style>

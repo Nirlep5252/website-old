@@ -1,0 +1,74 @@
+---
+export interface Props {
+    active: string;
+}
+const { active } = Astro.props;
+---
+
+<ul>
+    <li><a class={active=="home" ? "active" : ""} href="/">home</a></li>
+    <li><a class={active=="projects" ? "active" : ""} href="/projects">projects</a></li>
+    <li><a class={active=="posts" ? "active" : ""} href="/posts">posts</a></li>
+</ul>
+
+<style>
+    ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 10px;
+        height: 75px;
+    }
+    .active, a:hover {
+        background: rgba(89, 86, 86, 0.472);
+        cursor: pointer;
+    }
+    a {
+        text-decoration: none;
+        color: lightgray;
+        font-size: 20px;
+        padding: 6px 8px;
+        border-radius: 10px;
+    }
+</style>
+<style is:global>
+	* {
+		padding: 0;
+		box-sizing: border-box;
+		margin: 0;
+        font-family: 'Noto Sans', sans-serif;
+	}
+    p {
+        color: lightgray;
+        font-size: 20px;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Rambla', sans-serif;
+        color: white;
+    }
+    body {
+        margin: auto;
+        width: 60vw;
+        background: #222;
+    }
+    @media (max-width: 1285px) {
+        body {
+            width: 60vw;
+        }
+    }
+    @media (max-width: 1080px) {
+        body {
+            width: 70vw;
+        }
+    }
+    @media (max-width: 915px) {
+        body {
+            width: 80vw;
+        }
+    }
+    @media (max-width: 810) {
+        body {
+            width: 90vw;
+        }
+    }
+</style>

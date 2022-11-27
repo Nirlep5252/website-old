@@ -1,62 +1,99 @@
 ---
 export interface Props {
-	title: string;
-	body: string;
-	href: string;
+  title: string;
+  body: string;
+  href: string;
+  tags: string;
+  demo?: string;
 }
 
-const { href, title, body } = Astro.props;
+const { href, title, body, tags, demo } = Astro.props;
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
-<style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 0.15rem;
-		background-color: white;
-		background-image: var(--accent-gradient);
-		background-size: 400%;
-		border-radius: 0.5rem;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-	}
+<div class="card">
+  <h1>{title}</h1>
+  <p>{body}</p>
+  <div class="tags-container">{tags.split(",").map((tag) => <span>{tag}</span>)}</div>
+  {
+    demo != undefined ? (
+      <a class="demo" href={demo}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <>
+            <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+            <circle cx="12" cy="12" r="3" />
+          </>
+        </svg>
+      </a>
+    ) : null
+  }
+  <a class="source" href={href} target="_blank">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      ><polyline points="16 18 22 12 16 6"></polyline><polyline
+        points="8 6 2 12 8 18"></polyline>
+    </svg>
+  </a>
+</div>
 
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: 1rem 1.3rem;
-		border-radius: 0.35rem;
-		color: #111;
-		background-color: white;
-		opacity: 0.8;
+<style>
+  .card {
+    text-decoration: none;
+    padding: 20px;
+    max-width: 50%;
+    position: relative;
+    background: rgba(51, 51, 51, 0.472);
+    border-radius: 10px;
+	min-height: 200px;
+  }
+  .tags-container {
+	position: absolute;
+	bottom: 30px;
+	display: flex;
+	flex-wrap: wrap;
+  }
+  p {
+    margin: 10px 0 20px 0;
+  }
+  span {
+    color: lightgray;
+    padding: 5px 10px;
+    margin-top: 20px;
+    background: rgba(89, 86, 86, 0.472);
+    margin-right: 10px;
+    border-radius: 10px;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+  }
+  .demo {
+	right: 60px;
+  }
+  @media (max-width: 1300px) {
+	.card {
+	  max-width: 100%;
+	  min-height: 250px;
 	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-		color: #444;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent));
-	}
+  }
 </style>
