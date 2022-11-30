@@ -1,0 +1,84 @@
+---
+import Navbar from "../../components/Navbar.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const allPosts = await Astro.glob("./*.mdx");
+allPosts.sort((a, b) => {
+  return b.frontmatter.pubTime - a.frontmatter.pubTime;
+});
+---
+
+<Layout title="Nirlep - Posts">
+  <Navbar active="posts" />
+  <h1 class="title">Recent Posts</h1>
+  <p>random stuff lmfao</p>
+  <div class="posts-list">
+    {
+      allPosts.map((post) => (
+        <a href={post.url}>
+          <>
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+              &nbsp;{post.frontmatter.title}
+            </span>
+            <p>
+              {new Date(post.frontmatter.pubTime * 1000).toLocaleString(
+                "en-GB",
+                {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                  hour: "numeric",
+                  minute: "2-digit",
+                }
+              )}
+            </p>
+          </>
+        </a>
+      ))
+    }
+  </div>
+</Layout>
+
+<style>
+  .title {
+    margin-top: 30px;
+    font-size: 50px;
+  }
+  .posts-list {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  a {
+    text-decoration: none;
+    font-size: 24px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  a:hover {
+    background: rgb(89, 86, 86, 0.472);
+  }
+  a p {
+    font-size: 14px;
+  }
+</style>

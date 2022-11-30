@@ -1,0 +1,130 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Layout from "./Layout.astro";
+
+export interface Props {
+  title: string;
+  pubDate: string;
+}
+
+const { title, pubTime } = Astro.props.frontmatter || Astro.props;
+---
+
+<Layout title={title}>
+  <Navbar active="posts" />
+  <div class="title-container">
+    <div class="title-container-2">
+      <a href="/posts/" class="back-btn">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </a>
+      <h1 class="title">{title}</h1>
+    </div>
+    <p>
+      <span class="date"
+        >Posted on {
+          new Date(pubTime * 1000).toLocaleString("en-GB", {
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+            hour: "numeric",
+            minute: "2-digit",
+          })
+        }</span>
+    </p>
+  </div>
+  <div class="blog-content">
+    <slot />
+  </div>
+</Layout>
+
+<style is:global>
+  p {
+    line-height: 1.5;
+  }
+  .title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+  }
+  .title-container-2 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .back-btn {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  .back-btn:hover {
+    background: rgb(89, 86, 86, 0.472);
+  }
+  .title {
+    font-size: 50px;
+  }
+  .blog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+  }
+  .date {
+    font-size: 14px;
+  }
+  hr {
+    color: gray;
+    opacity: 0.2;
+  }
+  a {
+    color: white;
+    text-underline-offset: 4px;
+    text-decoration-color: #05d8e8;
+    text-decoration-thickness: 2px;
+  }
+  a:hover {
+    text-decoration-style: wavy;
+    text-underline-offset: 2px;
+  }
+  h2 {
+    font-size: 30px;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 1100px) {
+    .title {
+      font-size: 40px;
+    }
+  }
+  @media (max-width: 700px) {
+    .title {
+      font-size: 36px;
+    }
+    .title-container {
+      flex-direction: column;
+      gap: 10px;
+      align-items: unset;
+    }
+    h2 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+</style>
