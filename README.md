@@ -1,1 +1,1 @@
-### [my website](https://nirlep.netlify.app/). - made with [Astro](https://astro.build/)
+### [my website](https://nirlep.codes/). - made with [Astro](https://astro.build/)
