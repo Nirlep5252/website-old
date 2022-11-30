@@ -131,6 +131,46 @@ import Layout from "../layouts/Layout.astro";
         <img height="32" width="32" src="/coffee.svg/" />
       </a> -->
     </div>
+    <div class="techstack">
+      <h2>Favorite Technologies</h2>
+      <p>
+        The list of languages, frameworks, libraries, and technologies that I
+        love to use in my projects.
+      </p>
+      <div class="tags">
+        <div class="tag">
+          <img
+            class="icon"
+            src="https://cdn.freebiesupply.com/logos/large/2x/python-5-logo-png-transparent.png"
+          />
+          <div class="name">Python</div>
+        </div>
+        <div class="tag">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" class="icon" />
+          <div class="name">JavaScript</div>
+        </div>
+        <div class="tag">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" class="icon" />
+          <div class="name">TypeScript</div>
+        </div>
+        <div class="tag">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" class="icon" />
+          <div class="name">React.JS</div>
+        </div>
+        <div class="tag">
+          <img src="https://seeklogo.com/images/N/next-js-icon-logo-EE302D5DBD-seeklogo.com.png" class="icon" />
+          <div class="name">Next.JS</div>
+        </div>
+        <div class="tag">
+          <img src="./favicon.svg/" class="icon" />
+          <div class="name">Astro</div>
+        </div>
+        <div class="tag">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg" class="icon" />
+          <div class="name">Svelte</div>
+        </div>
+      </div>
+    </div>
   </div>
 </Layout>
 
@@ -168,6 +208,9 @@ import Layout from "../layouts/Layout.astro";
   h1 {
     font-size: 60px;
   }
+  h2 {
+    font-size: 32px;
+  }
   h3 {
     font-size: 24px;
   }
@@ -185,6 +228,30 @@ import Layout from "../layouts/Layout.astro";
     text-decoration-style: wavy;
     text-underline-offset: 2px;
   }
+  .techstack {
+    margin-top: 50px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 20px;
+    color: white;
+    background: rgba(89, 86, 86, 0.472);
+    padding: 6px 10px;
+    border-radius: 10px;
+  }
+  .icon {
+    height: 24px;
+    filter: grayscale(.5);
+  }
   @media (max-width: 810px) {
     h1 {
       font-size: 40px;
@@ -193,7 +260,7 @@ import Layout from "../layouts/Layout.astro";
       font-size: 20px;
     }
     p {
-      font-size: 16px;
+      font-size: 18px;
     }
   }
 </style>
